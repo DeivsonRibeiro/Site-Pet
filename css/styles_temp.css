@@ -1,0 +1,17 @@
+.main-conteudo{
+  padding: 20px;
+  background-color: var(--cor-secundaria); 
+
+} 
+.menu-lateral{
+ 
+  color: #fff;
+}
+ul{
+  list-style: none;
+  color: #333;
+} 
+a{
+  text-decoration: none;
+  color: #fff;  
+} 

@@ -1,0 +1,735 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 2️⃣ VARIÁVEIS (opcional, mas profissional) */
+:root {
+  --cor-primaria: #4e031e;
+  --cor-secundaria: #5d2d4e;
+  --cor-fundo: #447390;
+  --fonte-padrao: Arial, Helvetica, sans-serif;
+}
+
+.header {
+  position: relative;
+  min-height: 300px; /* Reduzi a altura da imagem de fundo */
+  background-image: url("../asset/img/Gemini_Generated_Image_qmyhdlqmyhdlqmyh.png");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 20px;
+  color: white;
+}
+
+.header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Overlay mais escuro para contraste */
+  z-index: 1;
+}
+
+.header-conteudo {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  text-align: center;
+}
+
+.logo img {
+  max-width: 150px; /* Ajuste o tamanho do logo se necessário */
+  height: auto;
+}
+
+.form-busca {
+  display: flex;
+  width: 100%; /* Ocupa 100% por padrão em telas menores */
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+@media (min-width: 769px) {
+  .form-busca {
+    width: 40%; /* Volta a ser 40% em telas maiores */
+  }
+}
+
+.form-busca input[type="search"] {
+  flex: 1;
+  height: 50px;
+  padding: 0 15px;
+  border: 2px solid #ccc;
+  border-right: none;
+  border-radius: 25px 0 0 25px;
+  font-size: 1rem;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.form-busca button {
+  width: 90px;
+  height: 50px;
+  background-color: var(--cor-primaria);
+  border: 2px solid var(--cor-primaria);
+  border-radius: 0 25px 25px 0;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+}
+
+.form-busca button:hover {
+  background-color: #0a0a0a33; /* efeito leve */
+}
+
+.menu-principal ul {
+  display: flex;
+  gap: 25px;
+  list-style: none;
+}
+
+.menu-principal a {
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1rem;
+  position: relative;
+  padding: 8px 0;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Espaço entre ícone e texto */
+}
+
+/* Efeito no ícone especificamente */
+.menu-principal a i {
+  font-size: 1.1rem;
+  transition: transform 0.3s ease;
+}
+
+.menu-principal a:hover i {
+  transform: scale(1.2) rotate(-10deg); /* Pequeno balanço no ícone */
+  color: #ffccbc;
+}
+
+/* Linha animada no hover */
+.menu-principal a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--cor-primaria);
+  transition: width 0.3s ease;
+}
+
+.menu-principal a:hover::after {
+  width: 100%;
+}
+
+.menu-principal a:hover {
+  color: #ffccbc; /* Leve mudança de cor ao passar o mouse */
+}
+
+/* ==========================
+   MENU CATEGORIAS MODERNO
+========================== */
+.menu-categorias {
+  width: 100%;
+  background-color: var(--cor-fundo);
+  padding: 12px 0;
+  position: relative;
+  z-index: 10;
+}
+
+/* Lista principal */
+.menu-categorias > ul {
+  display: flex;
+  justify-content: center;
+  gap: 80px; /* Mais espaço entre categorias */
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+/* Categoria */
+.categoria {
+  position: relative;
+}
+
+/* Link principal */
+.categoria > a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  text-decoration: none;
+  background-color: #447390;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Brilho ao passar o mouse */
+.categoria > a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.categoria:hover > a::before {
+  left: 100%;
+}
+
+/* Efeito hover no menu principal */
+.categoria > a:hover {
+  background-color: var(--cor-secundaria);
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Submenu escondido */
+.submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #ffffff;
+  min-width: 240px; /* Um pouco mais largo */
+  max-height: 0; /* inicia fechado */
+  overflow-y: auto; /* Habilita rolagem vertical */
+  overflow-x: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  z-index: 1000;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+  opacity: 0;
+}
+
+/* Estilo Premium da Barra de Rolagem */
+.submenu::-webkit-scrollbar {
+  width: 6px;
+}
+
+.submenu::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 5px;
+}
+
+.submenu::-webkit-scrollbar-thumb {
+  background: var(--cor-primaria);
+  border-radius: 5px;
+}
+
+.submenu::-webkit-scrollbar-thumb:hover {
+  background: var(--cor-secundaria);
+}
+
+/* Mostrar submenu com slide e limite de altura para rolagem */
+.categoria:hover .submenu,
+.categoria:focus-within .submenu {
+  max-height: 300px; /* Altura máxima para ativar a rolagem */
+  opacity: 1;
+}
+
+/* Itens do submenu */
+.submenu li a {
+  display: block;
+  padding: 14px 20px; /* Mais espaço nos itens */
+  color: #333;
+  text-decoration: none;
+  font-size: 0.95rem;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background-color 0.2s, padding-left 0.2s;
+}
+
+.submenu li:last-child a {
+  border-bottom: none;
+}
+
+/* Hover nos itens do submenu */
+.submenu li a:hover {
+  background-color: #f8f8f8;
+  padding-left: 25px; /* Efeito de deslocamento no hover */
+  color: var(--cor-primaria);
+}
+
+/* ==========================
+   RESPONSIVO
+========================== */
+@media (max-width: 768px) {
+  .menu-categorias > ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .categoria > a {
+    padding: 10px 15px;
+  }
+}
+.main-conteudo {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 30px;
+  max-width: 1300px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+.menu-lateral {
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  height: fit-content;
+}
+
+.menu-lateral h2 {
+  color: var(--cor-primaria);
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.menu-lateral ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.menu-lateral a {
+  color: #555;
+  text-decoration: none;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.menu-lateral a:hover {
+  color: var(--cor-primaria);
+  padding-left: 5px;
+}
+
+.conteudo-principal {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+h1 {
+  color: var(--cor-primaria); /* mantém a cor principal */
+  text-align: center; /* centraliza o texto */
+  padding: 0 10px 15px 10px; /* espaçamento superior 0, lateral 10px, inferior 15px */
+  font-size: 2rem; /* tamanho de fonte maior e legível */
+  font-weight: 600; /* deixa o texto mais destacado */
+  line-height: 1.4;
+}
+
+/* Seção da Imagem da Loja */
+.imagem-loja-section {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+img.imagem-loja {
+  width: 100%;
+  max-width: 100%;
+  height: 400px; /* Altura fixa para manter o padrão */
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  display: block;
+}
+
+/* Seção de Endereço e Informações */
+.endereco-loja {
+  width: 100%;
+  background-color: #fdfdfd;
+  padding: 30px;
+  margin-top: 30px; /* Espaçamento claro, sem sobreposição */
+  position: relative;
+  z-index: 3;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 15px;
+  display: grid;
+  grid-template-columns: repeat(
+    3,
+    1fr
+  ); /* 3 colunas para Endereço, Horário e Contato */
+  gap: 30px;
+  border-top: 5px solid var(--cor-primaria);
+}
+
+/* Ajuste para dispositivos móveis */
+@media (max-width: 768px) {
+  .endereco-loja {
+    grid-template-columns: 1fr; /* 1 coluna no celular */
+    padding: 20px;
+  }
+  img.imagem-loja {
+    height: 250px;
+  }
+}
+
+.endereco-loja h2 {
+  color: var(--cor-primaria);
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 700;
+}
+
+.endereco-loja h2 i {
+  color: var(--cor-primaria);
+  width: 20px;
+}
+
+.endereco-loja p,
+.endereco-loja li {
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.endereco-loja ul {
+  list-style: none;
+  padding: 0;
+}
+
+.servicos-disponiveis {
+  color: var(--cor-primaria);
+  width: 100%;
+  background-color: var(--cor-secundaria);
+  padding: 30px;
+  margin-top: 30px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 15px;
+  display: grid;
+  grid-template-columns: repeat(
+    2,
+    1fr
+  ); /* 2 colunas para Serviços e Promoções */
+  gap: 40px;
+  line-height: 1.4;
+}
+
+.h2servicos {
+  color: #fff;
+  font-size: 2rem;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 700;
+}
+.ul-servicos {
+  list-style: none;
+  padding: 0;
+  font-size: 1.4rem;
+}
+.ul-servicos li {
+  color: #fff;
+}
+.ul-servicos li::before {
+  content: "\2713";
+  margin-right: 10px;
+  font-weight: bold;
+  color: #14d12d;
+}
+.encontra-loja {
+  color: var(--cor-primaria);
+  padding-top: 3rem;
+}
+
+.encontra-loja h2 {
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+}
+
+.categorias-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start;
+  margin-top: 20px;
+}
+
+.categoria-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 120px; /* Largura controlada para as imagens ficarem menores */
+}
+
+.categoria-card p {
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: var(--cor-primaria);
+}
+
+.categoria-card img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  border: 2px solid var(--cor-primaria);
+  border-radius: 50px;
+  padding: 10px;
+  background-color: var(--cor-secundaria);
+  transition: all 0.3s ease;
+}
+
+.categoria-card:hover img {
+  transform: scale(1.05);
+  border-color: var(--cor-secundaria);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.encontra-loja a {
+  color: var(--cor-primaria);
+}
+
+.encontra-loja a:hover {
+  color: var(--cor-secundaria);
+}
+
+.sugestoes {
+  color: var(--cor-primaria);
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.sugestoes h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 700;
+}
+
+.sugestoes p {
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  color: var(--cor-primaria);
+}
+.label-sugestao {
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  color: var(--cor-primaria);
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 15px;
+  border: 2px solid #eee;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  resize: vertical; /* Permite redimensionar apenas na vertical */
+  min-height: 120px; /* Altura mínima para o textarea */
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--cor-primaria);
+}
+
+/* Estilo para o botão de sugestões que é um <button> dentro do form */
+.sugestoes form button {
+  width: 30%;
+  padding: 15px;
+  background-color: var(--cor-primaria);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.sugestoes form button:hover {
+  background-color: var(--cor-secundaria);
+  transform: translateY(-2px);
+}
+
+.sugestoes form button:active {
+  transform: translateY(0);
+}
+/* ==========================
+   FOOTER MODERNO
+========================== */
+.footer-site {
+  background-color: var(--cor-primaria);
+  color: white;
+  padding: 60px 20px 20px;
+  margin-top: 50px;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 40px;
+  text-align: left;
+}
+
+.footer-col h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #fff;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.footer-col h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 40px;
+  height: 2px;
+  background-color: var(--cor-fundo);
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 12px;
+}
+
+.footer-col ul li a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.footer-col ul li a:hover {
+  color: #fff;
+  transform: translateX(5px);
+}
+
+/* Redes Sociais */
+.redes-sociais {
+  display: flex;
+  flex-wrap: nowrap; /* Garante que fiquem na mesma linha */
+  gap: 15px;
+}
+
+.redes-sociais li a img {
+  width: 30px;
+  height: 30px;
+  filter: brightness(0) invert(1); /* Deixa os ícones brancos */
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.redes-sociais li a:hover img {
+  transform: translateY(-5px) scale(1.1);
+  filter: brightness(1) invert(0); /* Volta a cor original no hover se desejar, ou mantenha branco */
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 40px auto 0;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.footer-bottom p {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 30px;
+  }
+
+  .footer-site {
+    padding: 40px 20px 20px;
+  }
+
+  .menu-principal ul {
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 992px) {
+  .main-conteudo {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .sugestoes form button {
+    width: 100%; /* Botão ocupa a largura toda no celular */
+  }
+
+  .form-busca {
+    max-width: 100%; /* Permite ocupar toda a largura disponível */
+  }
+}
+
+@media (max-width: 480px) {
+  .form-busca button {
+    width: 70px; /* Reduz um pouco o botão em telas muito estreitas */
+    font-size: 1rem;
+  }
+
+  .menu-principal a {
+    font-size: 0.85rem;
+    gap: 5px;
+  }
+}
