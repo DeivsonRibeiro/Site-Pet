@@ -661,8 +661,16 @@ textarea:focus {
 /* Redes Sociais */
 .redes-sociais {
   display: flex;
-  flex-wrap: nowrap; /* Garante que fiquem na mesma linha */
+  flex-wrap: nowrap; /* Mantém em linha única em monitores */
   gap: 15px;
+  justify-content: flex-start;
+}
+
+@media (max-width: 768px) {
+  .redes-sociais {
+    flex-wrap: wrap; /* Permite quebra em telas menores */
+    justify-content: center; /* Centraliza para não cortar em dispositivos móveis */
+  }
 }
 
 .redes-sociais li a img {
