@@ -95,7 +95,8 @@
 }
 
 .form-busca button:hover {
-  background-color: #0a0a0a33; /* efeito leve */
+  background-color: var(--cor-secundaria);
+  border-color: var(--cor-secundaria);
 }
 
 .menu-principal ul {
@@ -665,8 +666,8 @@ textarea:focus {
 }
 
 .redes-sociais li a img {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   filter: brightness(0) invert(1); /* Deixa os ícones brancos */
   transition: transform 0.3s ease, filter 0.3s ease;
 }
