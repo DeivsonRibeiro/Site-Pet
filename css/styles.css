@@ -565,6 +565,9 @@ textarea {
   font-family: inherit;
   font-size: 1rem;
   transition: border-color 0.3s ease;
+}
+
+textarea {
   resize: vertical; /* Permite redimensionar apenas na vertical */
   min-height: 120px; /* Altura mínima para o textarea */
 }

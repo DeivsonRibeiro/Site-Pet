@@ -1,0 +1,191 @@
+:root {
+  --cor-primaria: #4e031e;
+  --cor-secundaria: #5d2d4e;
+  --cor-fundo: #447390;
+}
+
+/* Modal fundo */
+.modal {
+  display: none; /* esconde por padrão */
+  position: fixed;
+  z-index: 2000; /* Acima de tudo */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.modal.show {
+  display: flex;
+  opacity: 1;
+}
+
+/* Conteúdo do modal (Login e Cadastro) */
+.login-container,
+.modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 360px; /* Tamanho menor como solicitado */
+  text-align: center;
+  position: relative;
+  animation: modalIn 0.3s ease-out;
+}
+
+@keyframes modalIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.login-container h1,
+.modal-content h2 {
+  color: var(--cor-primaria);
+  margin-bottom: 8px;
+  font-size: 1.6rem;
+}
+
+.login-container p {
+  color: #666;
+  margin-bottom: 25px;
+  font-size: 0.85rem;
+}
+
+.form-group {
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  color: #333;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.form-group input {
+  width: 100%;
+  height: 35px;
+  min-height: 0; /* Garante que não herde alturas gigantes */
+  padding: 0 10px;
+  display: block;
+  border: 2px solid #eee;
+  border-radius: 8px;
+  transition: all 0.3s;
+  font-size: 0.9rem;
+  box-sizing: border-box;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--cor-primaria);
+  box-shadow: 0 0 5px rgba(78, 3, 30, 0.1);
+}
+
+/* Wrapper do input de senha */
+.senha-wrapper {
+  position: relative;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #999;
+  padding: 5px;
+  transition: color 0.3s;
+}
+
+.password-toggle:hover {
+  color: var(--cor-primaria);
+}
+
+/* Botões */
+.btn-login {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--cor-primaria);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 5px;
+}
+
+.btn-login:hover {
+  background-color: var(--cor-secundaria);
+  transform: translateY(-2px);
+}
+
+.btn-cadastrar-modal {
+  background: none;
+  border: none;
+  color: var(--cor-fundo);
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-top: 15px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.btn-cadastrar-modal:hover {
+  color: var(--cor-primaria);
+}
+
+/* Botão fechar (X) */
+.close-modal {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: #999;
+  transition: color 0.3s;
+  line-height: 1;
+}
+
+.close-modal:hover {
+  color: #333;
+}
+
+.back-home {
+  display: inline-block;
+  margin-top: 15px;
+  color: #888;
+  text-decoration: none;
+  font-size: 0.8rem;
+}
+
+.back-home:hover {
+  text-decoration: underline;
+}
+
+/* Responsividade */
+@media (max-width: 400px) {
+  .login-container,
+  .modal-content {
+    padding: 20px;
+    max-width: 320px;
+  }
+}
