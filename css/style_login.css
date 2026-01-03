@@ -141,7 +141,7 @@
 .btn-cadastrar-modal {
   background: none;
   border: none;
-  color: var(--cor-fundo);
+  color: var(--cor-primaria);
   font-weight: 600;
   font-size: 0.85rem;
   margin-top: 15px;
@@ -151,6 +151,63 @@
 
 .btn-cadastrar-modal:hover {
   color: var(--cor-primaria);
+}
+
+/* Login Social */
+.btn-google {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--cor-primaria); /* Fundo branco para destacar o ícone colorido */
+  color: white;
+  border: 1px solid #dadce0;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 15px;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    box-shadow 0.2s; /* Transição sólida e rápida */
+}
+
+.btn-google:hover {
+  background-color:var(--cor-fundo);
+  transform: scale(1.02); /* Novo efeito de "pop" */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.btn-google img {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 15px 0;
+  color: #999;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #eee;
+}
+
+.divider:not(:empty)::before {
+  margin-right: 0.5em;
+}
+
+.divider:not(:empty)::after {
+  margin-left: 0.5em;
 }
 
 /* Botão fechar (X) */
